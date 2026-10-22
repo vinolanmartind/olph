@@ -1,28 +1,46 @@
+
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
 const { css, title = 'Our Lady of Perpetual Help Church' } = Astro.props;
-const v = '11'; // change this number if browsers keep an old CSS/JS copy
+const v = '12';
 const path = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+const asset = `${base}asset/`;
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@600;700&family=Poppins:wght@600;700&display=swap">
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'light'}catch(e){}</script>
-<link rel="stylesheet" href={`/asset/css/base.css?v=${v}`}>
-<link rel="stylesheet" href={`/asset/css/header.css?v=${v}`}>
-<link rel="stylesheet" href={`/asset/css/footer.css?v=${v}`}>
-{css && <link rel="stylesheet" href={`/asset/css/${css}.css?v=${v}`}>}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@600;700&family=Poppins:wght@600;700&display=swap"
+  >
+
+  <script is:inline>
+    try {
+      document.documentElement.dataset.theme =
+        localStorage.getItem('theme') || 'light';
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href={`${asset}css/base.css?v=${v}`}>
+  <link rel="stylesheet" href={`${asset}css/header.css?v=${v}`}>
+  <link rel="stylesheet" href={`${asset}css/footer.css?v=${v}`}>
+
+  {css && <link rel="stylesheet" href={`${asset}css/${css}.css?v=${v}`}>}
 </head>
 <body>
-<Header path={path} />
-<slot />
-<Footer />
-<script is:inline src={`/asset/js/main.js?v=${v}`} defer></script>
+  <Header path={path} />
+  <slot />
+  <Footer />
+
+  <script is:inline src={`${asset}js/main.js?v=${v}`} defer></script>
 </body>
 </html>
