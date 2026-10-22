@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout css="home">
 <section class="ark" aria-label="Gallery">
-<div class="dove"><img src="/asset/images/churchimg/church.JPG" alt="" onerror="this.style.display='none'"></div>
-<div class="dove"><img src="/asset/images/churchimg/flagtree.JPG" alt="" onerror="this.style.display='none'"></div>
+<div class="dove"><img src={`${import.meta.env.BASE_URL}asset/images/churchimg/church.JPG'} alt="" onerror="this.style.display='none'"></div>
+<div class="dove"><img src={`${import.meta.env.BASE_URL}asset/images/churchimg/flagtree.JPG'} alt="" onerror="this.style.display='none'"></div>
 
 
 </section>
