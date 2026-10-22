@@ -7,21 +7,21 @@ const here = path.endsWith("/") ? path : path + "/";
 const is = (href: string): boolean => href === here;
 
 const menu = [
-  { href: "/", en: "Home", ta: "முகப்பு" },
-  { href: "/about/", en: "About", ta: "எங்களைப் பற்றி" },
+  { href: base, en: "Home", ta: "முகப்பு" },
+  { href: `${base}about/`, en: "About", ta: "எங்களைப் பற்றி" },
   {
     id: "sub-timings",
-    href: "/church-timings/",
+    href: `${base}church-timings/`,
     en: "Church Timings",
     ta: "ஆலய நேரங்கள்",
     kids: [
       {
-        href: "/church-timings/mass-timings/",
+        href: `${base}church-timings/mass-timings/`,
         en: "Mass Timings",
         ta: "திருப்பலி நேரங்கள்",
       },
       {
-        href: "/church-timings/special-timings/",
+        href: `${base}church-timings/special-timings/`,
         en: "Special Timings",
         ta: "சிறப்பு நேரங்கள்",
       },
@@ -29,18 +29,18 @@ const menu = [
   },
   {
     id: "sub-youth",
-    href: "/youth/",
+    href: `${base}youth/`,
     en: "Youth",
     ta: "இளையோர்",
     kids: [
-      { href: "/youth/", en: "About Youth", ta: "இளையோர் பற்றி" },
-      { href: "/youth/events/", en: "Youth Events", ta: "இளையோர் நிகழ்வுகள்" },
-      { href: "/youth/join/", en: "Join Us", ta: "எங்களுடன் இணையுங்கள்" },
+      { href: `${base}youth/`, en: "About Youth", ta: "இளையோர் பற்றி" },
+      { href: `${base}youth/events/`, en: "Youth Events", ta: "இளையோர் நிகழ்வுகள்" },
+      { href: `${base}youth/join/`, en: "Join Us", ta: "எங்களுடன் இணையுங்கள்" },
     ],
   },
-  { href: "/events/", en: "Events", ta: "நிகழ்வுகள்" },
-  { href: "/gallery/", en: "Gallery", ta: "படத்தொகுப்பு" },
-  { href: "/contact/", en: "Contact", ta: "தொடர்புக்கு" },
+  { href: `${base}events/`, en: "Events", ta: "நிகழ்வுகள்" },
+  { href: `${base}gallery/`, en: "Gallery", ta: "படத்தொகுப்பு" },
+  { href: `${base}contact/`, en: "Contact", ta: "தொடர்புக்கு" },
 ];
 type MenuItem = {
   id?: string;
