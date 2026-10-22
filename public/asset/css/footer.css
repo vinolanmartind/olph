@@ -1,0 +1,15 @@
+/* ===== FOOTER ===== */
+.revelation{background:var(--hf);color:var(--on-brand);margin-top:auto;border-top:3px solid var(--accent)}
+.covenant{width:min(1200px,100%);margin:0 auto;padding:clamp(30px,5vw,52px) 16px;display:grid;grid-template-columns:1.3fr 1fr 1.2fr 1.4fr;gap:clamp(20px,3vw,36px)}
+.covenant>*{min-width:0}
+.cross-big{width:clamp(96px,14vw,128px);aspect-ratio:298/272;height:auto;object-fit:cover;border-radius:var(--logo-radius);border:3px solid rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.shrine{margin-top:12px;font-size:.9em;font-weight:700;text-transform:uppercase;letter-spacing:.6px;line-height:1.4}
+.disciple h3{font-size:1em;font-weight:700;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
+.disciple h3::after{content:"";display:block;width:34px;height:3px;border-radius:3px;background:var(--accent);margin-top:7px}
+.disciple li{margin-bottom:9px}
+.disciple a{transition:color .2s,padding .2s}.disciple li a:hover{color:var(--accent);padding-left:6px}
+.disciple address{font-style:normal;line-height:1.9}
+.hallelujah{border-top:1px solid rgba(255,255,255,.25);text-align:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));font-size:.9em;font-weight:600}
+@media(max-width:900px){.covenant{grid-template-columns:1fr 1fr}.disciple:first-child{grid-column:1/-1;text-align:center}.cross-big{margin:0 auto}}
+@media(max-width:520px){.covenant{gap:22px 14px}.disciple:last-child{grid-column:1/-1;text-align:center}.disciple:first-child h3::after,.disciple:last-child h3::after{margin-inline:auto}.disciple li a{overflow-wrap:anywhere}}
+@media(max-width:360px){.covenant{padding:24px 12px;font-size:.92em}}

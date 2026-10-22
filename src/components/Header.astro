@@ -1,0 +1,168 @@
+---
+/* HEADER - written once, used on every page.
+   To add / rename a menu link, edit the `menu` list below. */
+const { path = "/" } = Astro.props;
+const here = path.endsWith("/") ? path : path + "/";
+const is = (href: string): boolean => href === here;
+
+const menu = [
+  { href: "/", en: "Home", ta: "முகப்பு" },
+  { href: "/about/", en: "About", ta: "எங்களைப் பற்றி" },
+  {
+    id: "sub-timings",
+    href: "/church-timings/",
+    en: "Church Timings",
+    ta: "ஆலய நேரங்கள்",
+    kids: [
+      {
+        href: "/church-timings/mass-timings/",
+        en: "Mass Timings",
+        ta: "திருப்பலி நேரங்கள்",
+      },
+      {
+        href: "/church-timings/special-timings/",
+        en: "Special Timings",
+        ta: "சிறப்பு நேரங்கள்",
+      },
+    ],
+  },
+  {
+    id: "sub-youth",
+    href: "/youth/",
+    en: "Youth",
+    ta: "இளையோர்",
+    kids: [
+      { href: "/youth/", en: "About Youth", ta: "இளையோர் பற்றி" },
+      { href: "/youth/events/", en: "Youth Events", ta: "இளையோர் நிகழ்வுகள்" },
+      { href: "/youth/join/", en: "Join Us", ta: "எங்களுடன் இணையுங்கள்" },
+    ],
+  },
+  { href: "/events/", en: "Events", ta: "நிகழ்வுகள்" },
+  { href: "/gallery/", en: "Gallery", ta: "படத்தொகுப்பு" },
+  { href: "/contact/", en: "Contact", ta: "தொடர்புக்கு" },
+];
+type MenuItem = {
+  id?: string;
+  href: string;
+  en: string;
+  ta: string;
+  kids?: MenuItem[];
+};
+
+const active = (m: MenuItem): boolean =>
+  is(m.href) || (m.kids ?? []).some((k: MenuItem) => is(k.href));
+---
+
+<header class="genesis">
+  <input type="checkbox" id="menuToggle" class="blessing" aria-label="Menu" />
+  <div class="pharaoh">
+    <div class="exodus">
+      <a href="/" class="shepherd"
+        ><img
+          src="/asset/images/logo.png"
+          alt=""
+          class="cross"
+          onerror="this.style.display='none'"
+        />
+        <span class="psalm" data-ta="நித்திய சகாய அன்னை ஆலயம்"
+          >OUR LADY OF PERPETUAL HELP</span
+        ></a
+      >
+      <div class="tools">
+        <button type="button" class="babel" aria-label="Language">தமிழ்</button>
+        <button type="button" class="daybreak" aria-label="Light / Dark"
+          ><svg class="moon" viewBox="0 0 24 24"
+            ><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg
+          ><svg class="sun" viewBox="0 0 24 24"
+            ><circle cx="12" cy="12" r="4"></circle><path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+            ></path></svg
+          ></button
+        >
+        <label for="menuToggle" class="manna" aria-label="Menu"
+          ><span></span><span></span><span></span></label
+        >
+      </div>
+    </div>
+  </div>
+  <div class="sanctuary">
+    <div class="moses">
+      <span data-ta="பட்டியல்">Menu</span><label
+        for="menuToggle"
+        class="amen"
+        aria-label="Close">&times;</label>
+    </div>
+    <div class="tongues">
+      <button type="button" class="babel tools-side" aria-label="Language"
+        >தமிழ்</button
+      >
+      <button
+        type="button"
+        class="daybreak tools-side"
+        aria-label="Light / Dark"
+        ><svg class="moon" viewBox="0 0 24 24"
+          ><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg
+        ><svg class="sun" viewBox="0 0 24 24"
+          ><circle cx="12" cy="12" r="4"></circle><path
+            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+          ></path></svg
+        ><span data-ta="தோற்றம்">Theme</span></button
+      >
+    </div>
+    <div class="psalter">
+      {
+        menu.map((m) =>
+          m.kids ? (
+            <div class="mount">
+              <input
+                type="checkbox"
+                id={m.id}
+                class="blessing-sub"
+                aria-label={m.en}
+                checked={active(m)}
+              />
+              <a
+                class:list={["levite", { anointed: is(m.href) }]}
+                href={m.href}
+              >
+                <>
+                  <span data-ta={m.ta}>{m.en}</span>
+                  <i class="jacob" />
+                </>
+              </a>
+              <label
+                for={m.id}
+                class:list={["levite", "lev-toggle", { anointed: active(m) }]}
+              >
+                <>
+                  <span data-ta={m.ta}>{m.en}</span>
+                  <i class="jacob" />
+                </>
+              </label>
+              <div class="jordan">
+                {m.kids.map((k) => (
+                  <a
+                    class:list={["levite", { anointed: is(k.href) }]}
+                    href={k.href}
+                    data-ta={k.ta}
+                  >
+                    {k.en}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              class:list={["levite", { anointed: is(m.href) }]}
+              href={m.href}
+              data-ta={m.ta}
+            >
+              {m.en}
+            </a>
+          ),
+        )
+      }
+    </div>
+  </div>
+  <label for="menuToggle" class="veil"></label>
+</header>

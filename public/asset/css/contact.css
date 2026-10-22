@@ -1,0 +1,14 @@
+/* ===== CONTACT: logo, two contact cards, full-width map ===== */
+.shiloh{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:24px;text-align:center}
+.shiloh .tidings{margin:0}
+.halo{width:clamp(64px,16vw,96px);height:clamp(64px,16vw,96px);object-fit:cover;flex:none;border-radius:var(--logo-radius);border:3px solid var(--card);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.tabernacle{max-width:580px;margin:0 auto}
+.altar{background:var(--soft);border-radius:16px;padding:clamp(18px,3vw,28px);box-shadow:0 6px 22px rgba(0,0,0,.12);min-width:0}
+.altar h2{font-size:1.15em;margin-bottom:12px;text-transform:uppercase;letter-spacing:.6px}
+.altar p{padding:8px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.altar p:last-child{border-bottom:0}
+.altar a:hover{text-decoration:underline}
+.temple{margin-top:clamp(18px,3vw,30px)}
+.temple h2{font-size:1.15em;margin-bottom:12px;text-transform:uppercase;letter-spacing:.6px}
+.temple iframe{display:block;width:100%;height:clamp(280px,50vw,460px);border:0;border-radius:16px;box-shadow:0 6px 22px var(--line)}
+.shiloh .tidings::after{margin-inline:auto}

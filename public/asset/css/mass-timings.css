@@ -1,0 +1,3 @@
+/* ===== MASS TIMINGS: each line is a row ===== */
+.parable p{padding:14px 0;border-bottom:1px dashed var(--line)}
+.parable p:last-child{border-bottom:0}
