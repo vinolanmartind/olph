@@ -1,58 +1,71 @@
-
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const base = import.meta.env.BASE_URL;
 ---
 
 <Layout css="home">
-  <section class="ark" aria-label="Gallery">
-    <div class="dove">
-      <img
-        src={`${base}asset/images/churchimg/church.JPG`}
-        alt="Our Lady of Perpetual Help Church"
-        onerror="this.style.display='none'"
-      />
-    </div>
+    <section class="ark" aria-label="Gallery">
+        <div class="dove">
+            <img src={`${base}asset/images/churchimg/church.JPG`} alt="Our Lady of Perpetual Help Church" onerror="this.style.display='none'" />
+        </div>
 
-    <div class="dove">
-      <img
-        src={`${base}asset/images/churchimg/flagtree.JPG`}
-        alt="Church flag tree"
-        onerror="this.style.display='none'"
-      />
-    </div>
-  </section>
+        <div class="dove">
+            <img
+                src={`${base}asset/images/churchimg/flagtree.JPG`} alt="Church flag tree" onerror="this.style.display='none'" />
+        </div>
 
-  <main class="gospel">
-    <h1
-      class="tidings"
-      data-ta="நித்திய சகாய அன்னை ஆலயத்திற்கு வரவேற்கிறோம்"
-    >
-      Welcome to Our Lady of Perpetual Help Church
-    </h1>
+        <div class="dove">
+            <img
+                src={`${base}asset/images/churchimg/church_right.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+        </div>
+        <div class="dove">
+            <img
+                src={`${base}asset/images/churchimg/church_candel.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+        </div>
+        <div class="dove">
+            <img
+                src={`${base}asset/images/churchimg/church_left.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+        </div>
+        <div class="dove">
+            <img
+                src={`${base}asset/images/churchimg/church_hall.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+        </div>
+    </section>
 
-    <div class="parable">
-      <p data-ta="வாருங்கள், இணைந்து வழிபட்டு நம்பிக்கையில் வளர்வோம்.">
-        Come, worship and grow together in faith.
-      </p>
-    </div>
+    <main class="gospel">
+        <h1
+            class="tidings"
+            data-ta="நித்திய சகாய அன்னை ஆலயத்திற்கு வரவேற்கிறோம்"
+        >
+            Welcome to Our Lady of Perpetual Help Church
+        </h1>
 
-    <div class="loaves">
-      <a class="loaf" href={`${base}church-timings/mass-timings/`}>
-        <h3 data-ta="திருப்பலி நேரங்கள்">Mass Timings</h3>
-        <p data-ta="திருப்பலி நேரங்களைக் காண்க.">See our Mass schedule.</p>
-      </a>
+        <div class="parable">
+            <p data-ta="வாருங்கள், இணைந்து வழிபட்டு நம்பிக்கையில் வளர்வோம்.">
+                Come, worship and grow together in faith.
+            </p>
+        </div>
 
-      <a class="loaf" href={`${base}youth/`}>
-        <h3 data-ta="இளையோர்">Youth</h3>
-        <p data-ta="எங்கள் இளையோருடன் இணையுங்கள்.">Join our youth family.</p>
-      </a>
+        <div class="loaves">
+            <a class="loaf" href={`${base}church-timings/mass-timings/`}>
+                <h3 data-ta="திருப்பலி நேரங்கள்">Mass Timings</h3>
+                <p data-ta="திருப்பலி நேரங்களைக் காண்க.">
+                    See our Mass schedule.
+                </p>
+            </a>
 
-      <a class="loaf" href={`${base}contact/`}>
-        <h3 data-ta="தொடர்புக்கு">Contact</h3>
-        <p data-ta="எங்களை அணுகுங்கள்.">Get in touch with us.</p>
-      </a>
-    </div>
-  </main>
+            <a class="loaf" href={`${base}youth/`}>
+                <h3 data-ta="இளையோர்">Youth</h3>
+                <p data-ta="எங்கள் இளையோருடன் இணையுங்கள்.">
+                    Join our youth family.
+                </p>
+            </a>
+
+            <a class="loaf" href={`${base}contact/`}>
+                <h3 data-ta="தொடர்புக்கு">Contact</h3>
+                <p data-ta="எங்களை அணுகுங்கள்.">Get in touch with us.</p>
+            </a>
+        </div>
+    </main>
 </Layout>
