@@ -8,6 +8,7 @@ const v = '12';
 const path = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 const asset = `${base}asset/`;
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +38,58 @@ const asset = `${base}asset/`;
   {css && <link rel="stylesheet" href={`${asset}css/${css}.css?v=${v}`}>}
 </head>
 <body>
+<div id="intro-screen" class="intro-screen" aria-label="Church introduction">
+  <video
+    id="intro-video"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+  >
+    <source src={`${base}asset/videos/intro.mp4`} type="video/mp4" />
+  </video>
+</div>
   <Header path={path} />
   <slot />
   <Footer />
 
   <script is:inline src={`${asset}js/main.js?v=${v}`} defer></script>
+  
+<script is:inline>
+  (() => {
+    const overlay = document.getElementById('intro-screen');
+    const video = document.getElementById('intro-video');
+    const introKey = 'olph-intro-played';
+
+    if (!overlay || !video) return;
+
+    // Play only once per browser tab session.
+    try {
+      if (sessionStorage.getItem(introKey) === 'yes') {
+        overlay.remove();
+        return;
+      }
+
+      sessionStorage.setItem(introKey, 'yes');
+    } catch (error) {
+      // Continue showing the intro if session storage is unavailable.
+    }
+
+    // Hide after five seconds, even if the video is longer.
+    window.setTimeout(() => {
+      overlay.classList.add('intro-hidden');
+
+      window.setTimeout(() => {
+        overlay.remove();
+      }, 600);
+    }, 5000);
+
+    // Start playback when possible.
+    video.play().catch(() => {
+      // The timer still hides the intro if playback fails.
+    });
+  })();
+</script>
+
 </body>
 </html>
