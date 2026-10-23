@@ -1,95 +1,111 @@
-
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-const { css, title = 'Our Lady of Perpetual Help Church' } = Astro.props;
-const v = '12';
+const { css, title = "Our Lady of Perpetual Help Church" } = Astro.props;
+const v = "12";
 const path = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 const asset = `${base}asset/`;
-
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{title}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>{title}</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@600;700&family=Poppins:wght@600;700&display=swap"
-  >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@600;700&family=Poppins:wght@600;700&display=swap"
+    />
 
-  <script is:inline>
-    try {
-      document.documentElement.dataset.theme =
-        localStorage.getItem('theme') || 'light';
-    } catch (e) {}
-  </script>
+    <script is:inline>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("theme") || "light";
+      } catch (e) {}
+    </script>
 
-  <link rel="stylesheet" href={`${asset}css/base.css?v=${v}`}>
-  <link rel="stylesheet" href={`${asset}css/header.css?v=${v}`}>
-  <link rel="stylesheet" href={`${asset}css/footer.css?v=${v}`}>
+    <link rel="stylesheet" href={`${asset}css/base.css?v=${v}`} />
+    <link rel="stylesheet" href={`${asset}css/header.css?v=${v}`} />
+    <link rel="stylesheet" href={`${asset}css/footer.css?v=${v}`} />
 
-  {css && <link rel="stylesheet" href={`${asset}css/${css}.css?v=${v}`}>}
-</head>
-<body>
-<div id="intro-screen" class="intro-screen" aria-label="Church introduction">
-  <video
-    id="intro-video"
-    autoplay
-    muted
-    playsinline
-    preload="auto"
-  >
-    <source src={`${base}asset/videos/intro.mp4`} type="video/mp4" />
-  </video>
-</div>
-  <Header path={path} />
-  <slot />
-  <Footer />
+    {css && <link rel="stylesheet" href={`${asset}css/${css}.css?v=${v}`} />}
+  </head>
+  <body>
+    <div
+      id="intro-screen"
+      class="intro-screen"
+      aria-label="Church introduction"
+    >
+      <video
+        id="intro-video"
+        class="intro-video"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source
+          media="(max-width: 767px)"
+          src={`${base}asset/videos/mobile_intro.mp4`}
+          type="video/mp4"
+        />
+        <source
+          media="(min-width: 768px)"
+          src={`${base}asset/videos/pcintro.mp4`}
+          type="video/mp4"
+        />
+      </video>
+    </div>
 
-  <script is:inline src={`${asset}js/main.js?v=${v}`} defer></script>
-  
-<script is:inline>
-  (() => {
-    const overlay = document.getElementById('intro-screen');
-    const video = document.getElementById('intro-video');
-    const introKey = 'olph-intro-played';
+    <Header path={path} />
+    <slot />
+    <Footer />
 
-    if (!overlay || !video) return;
+    <script is:inline src={`${asset}js/main.js?v=${v}`} defer></script>
 
-    // Play only once per browser tab session.
-    try {
-      if (sessionStorage.getItem(introKey) === 'yes') {
-        overlay.remove();
-        return;
-      }
+    <script is:inline>
+      (() => {
+        const overlay = document.getElementById("intro-screen");
+        const video = document.getElementById("intro-video");
+        const introKey = "olph-intro-played";
 
-      sessionStorage.setItem(introKey, 'yes');
-    } catch (error) {
-      // Continue showing the intro if session storage is unavailable.
-    }
+        if (!overlay || !video) return;
 
-    // Hide after five seconds, even if the video is longer.
-    window.setTimeout(() => {
-      overlay.classList.add('intro-hidden');
+        // Play only once per browser tab session.
+        try {
+          if (sessionStorage.getItem(introKey) === "yes") {
+            overlay.remove();
+            return;
+          }
 
-      window.setTimeout(() => {
-        overlay.remove();
-      }, 600);
-    }, 5000);
+          sessionStorage.setItem(introKey, "yes");
+        } catch (error) {
+          // Continue showing the intro if session storage is unavailable.
+        }
 
-    // Start playback when possible.
-    video.play().catch(() => {
-      // The timer still hides the intro if playback fails.
-    });
-  })();
-</script>
+        // Hide after five seconds, even if the video is longer.
+        window.setTimeout(() => {
+          overlay.classList.add("intro-hidden");
 
-</body>
+          window.setTimeout(() => {
+            overlay.remove();
+          }, 600);
+        }, 5000);
+
+        // Start playback when possible.
+        video.play().catch(() => {
+          // The timer still hides the intro if playback fails.
+        });
+      })();
+    </script>
+  </body>
 </html>

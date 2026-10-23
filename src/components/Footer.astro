@@ -1,14 +1,14 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <footer class="revelation">
     <div class="covenant">
         <div class="disciple">
             <img
-                class="cross-big"
-                src="/asset/images/logo.png"
-                alt=""
-                onerror="this.style.display='none'"
-            /><p class="shrine" data-ta="நித்திய சகாய அன்னை ஆலயம்">
-                Our Lady of Perpetual Help
-            </p>
+                src={`${base}asset/images/logo_texts.png`}
+                alt="Our Lady of Perpetual Help Church Logo"
+            />
         </div>
         <div class="disciple">
             <h3 data-ta="விரைவு இணைப்புகள்">Quick Links</h3><ul>
@@ -21,19 +21,23 @@
             <h3 data-ta="எங்கள் கொள்கை">Our Policy</h3><ul>
                 <li>
                     <a href="/privacy-policy/" data-ta="தனியுரிமைக் கொள்கை"
-                        >Privacy Policy</a>
+                        >Privacy Policy</a
+                    >
                 </li>
                 <li>
                     <a href="/disclaimer-policy/" data-ta="மறுப்புக் கொள்கை"
-                        >Disclaimer Policy</a>
+                        >Disclaimer Policy</a
+                    >
                 </li>
                 <li>
                     <a href="/terms/" data-ta="விதிமுறைகள் மற்றும் நிபந்தனைகள்"
-                        >Terms and Condition</a>
+                        >Terms and Condition</a
+                    >
                 </li>
                 <li>
                     <a href="/legal-policy/" data-ta="சட்டக் கொள்கை"
-                        >Legal Policy</a>
+                        >Legal Policy</a
+                    >
                 </li>
             </ul>
         </div>

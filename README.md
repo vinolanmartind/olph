@@ -49,3 +49,7 @@ Or run `npm run build` and upload the `dist` folder by hand (Netlify drag-and-dr
 ## Still to replace (placeholders)
 Phone numbers + email in `src/pages/contact.astro` and the footer phone, slider images, the 4 policy pages
 (`privacy-policy`, `disclaimer-policy`, `terms`, `legal-policy`) that the footer links to.
+border: 0.5px solid rgba(255, 255, 255, .9); - logo side white border.
+<p class="shrine" data-ta="நித்திய சகாய அன்னை ஆலயம்">
+                Our Lady of Perpetual Help
+            </p>
