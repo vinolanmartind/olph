@@ -53,3 +53,43 @@ border: 0.5px solid rgba(255, 255, 255, .9); - logo side white border.
 <p class="shrine" data-ta="நித்திய சகாய அன்னை ஆலயம்">
                 Our Lady of Perpetual Help
             </p>
+git:
+git status
+git add .
+git commit -m "Update church logo and website"
+git push origin main
+
+
+.tidings::after {
+  content: "";             under line for main content
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+  margin-top: 10px
+}
+.mass-schedule {
+    max-width: 650px;   
+    margin: 35px auto;
+    background: #fff;
+ <div class="loaves">
+            <a class="loaf" href={`${base}church-timings/mass-timings/`}>
+                <h3 data-ta="திருப்பலி நேரங்கள்">Mass Timings</h3>
+                <p data-ta="திருப்பலி நேரங்களைக் காண்க.">
+                    See our Mass schedule.
+                </p>
+            </a>
+
+            <a class="loaf" href={`${base}youth/`}>
+                <h3 data-ta="இளையோர்">Youth</h3>
+                <p data-ta="எங்கள் இளையோருடன் இணையுங்கள்.">
+                    Join our youth family.
+                </p>
+            </a>
+
+            <a class="loaf" href={`${base}contact/`}>
+                <h3 data-ta="தொடர்புக்கு">Contact</h3>
+                <p data-ta="எங்களை அணுகுங்கள்.">Get in touch with us.</p>
+            </a>
+        </div>

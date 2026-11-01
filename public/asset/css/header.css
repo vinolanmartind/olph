@@ -38,12 +38,12 @@
 
 .cross {
     width: clamp(46px, 12vw, 64px);
-    aspect-ratio: 298/272;
+    
     height: auto;
-    object-fit: cover;
+    
     flex: none;
     border-radius: var(--logo-radius);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .35)
+    
 }
 
 .psalm {

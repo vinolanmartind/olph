@@ -1,14 +1,195 @@
 /* ===== HOME: full-width slider (images 1920x800) with gentle zoom-out + quick cards ===== */
-.ark{position:relative;width:100%;aspect-ratio:12/5;overflow:hidden;background:#dfe6ee}
+.ark {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 12/5;
+    overflow: hidden;
+    background: #dfe6ee
+}
+
 /* pure CSS slider: 5 images, 3 seconds each, gentle zoom-out (no JavaScript) */
-.dove{position:absolute;inset:0;opacity:0;animation:ark 15s infinite both}
-.dove:nth-child(2){animation-delay:3s}.dove:nth-child(3){animation-delay:6s}.dove:nth-child(4){animation-delay:9s}.dove:nth-child(5){animation-delay:12s}
-.dove img{width:100%;height:100%;object-fit:cover;animation:zoomout 15s infinite both;animation-delay:inherit}
-@keyframes ark{0%{opacity:0}6%{opacity:1}20%{opacity:1}26%{opacity:0}100%{opacity:0}}
-@keyframes zoomout{0%{transform:scale(1.1)}22%{transform:scale(1)}100%{transform:scale(1)}}
-@media(prefers-reduced-motion:reduce){.dove{animation:none}.dove:first-child{opacity:1}.dove img{animation:none}}
-@media(max-width:700px){.ark{aspect-ratio:16/10}}
-.loaves{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px;margin-top:28px}
-.loaf{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
-.loaf:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
-.loaf h3{margin-bottom:6px;font-weight:700}.loaf p{opacity:.8}
+.dove {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: ark 15s infinite both
+}
+
+.dove:nth-child(2) {
+    animation-delay: 3s
+}
+
+.dove:nth-child(3) {
+    animation-delay: 6s
+}
+
+.dove:nth-child(4) {
+    animation-delay: 9s
+}
+
+.dove:nth-child(5) {
+    animation-delay: 12s
+}
+
+.dove img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomout 15s infinite both;
+    animation-delay: inherit
+}
+.mass-schedule {
+    
+    border: 1px solid #c9a24b;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.schedule-tabs {
+    display: flex;
+    border-bottom: 1px solid #c9a24b;
+}
+
+.schedule-tab {
+    flex: 1;
+    padding: 16px 10px;
+    border: none;
+    background: #f3fafd;
+    color: #0b2a3a;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.schedule-tab.active {
+    background: #0b2a3a;
+    color: #fff;
+}
+
+.schedule-content {
+    display: none;
+    padding: 20px;
+}
+
+.schedule-content.active {
+    display: block;
+}
+
+.schedule-content h2 {
+    text-align: center;
+    color: #0b2a3a;
+}
+
+.schedule-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-content th,
+.schedule-content td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.schedule-content th {
+    background: #f3fafd;
+    color: #0b2a3a;
+}
+
+@media (max-width: 600px) {
+    .mass-schedule {
+        margin: 25px 12px;
+    }
+
+    .schedule-tab {
+        font-size: 13px;
+        padding: 13px 5px;
+    }
+}
+
+@keyframes ark {
+    0% {
+        opacity: 0
+    }
+
+    6% {
+        opacity: 1
+    }
+
+    20% {
+        opacity: 1
+    }
+
+    26% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes zoomout {
+    0% {
+        transform: scale(1.1)
+    }
+
+    22% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .dove {
+        animation: none
+    }
+
+    .dove:first-child {
+        opacity: 1
+    }
+
+    .dove img {
+        animation: none
+    }
+}
+
+@media(max-width:700px) {
+    .ark {
+        aspect-ratio: 16/10
+    }
+}
+
+.loaves {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 18px;
+    margin-top: 28px
+}
+
+.loaf {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s
+}
+
+.loaf:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .18)
+}
+
+.loaf h3 {
+    margin-bottom: 6px;
+    font-weight: 700
+}
+
+.loaf p {
+    opacity: .8
+}

@@ -10,21 +10,37 @@ const menu = [
   { href: base, en: "Home", ta: "முகப்பு" },
   { href: `${base}about/`, en: "About", ta: "எங்களைப் பற்றி" },
   {
-    id: "sub-timings",
-    href: `${base}church-timings/`,
-    en: "Church Timings",
-    ta: "ஆலய நேரங்கள்",
+    id: "sub-Parish",
+    href: `${base}Parish/`,
+    en: "Parish",
+    ta: "திருச்சபை",
     kids: [
       {
-        href: `${base}church-timings/mass-timings/`,
-        en: "Mass Timings",
-        ta: "திருப்பலி நேரங்கள்",
+        href: `${base}Parish/`,
+        en: "Current Priest",
+        ta: "பங்குத்தந்தையர்களின் வரலாறு",
       },
       {
-        href: `${base}church-timings/special-timings/`,
+        href: `${base}Parish/PriestHistory/`,
+        en: "Priest History",
+        ta: "பங்குத்தந்தையர்களின் வரலாறு",
+      },
+      {
+        href: `${base}Parish/special-timings/`,
         en: "Special Timings",
         ta: "சிறப்பு நேரங்கள்",
       },
+    ],
+  },
+  {
+    id: "sub-LegionofMary",
+    href: `${base}LegionofMary/`,
+    en: "Legion Mary",
+    ta: "மரியாயின் சேனை",
+    kids: [
+      { href: `${base}LegionofMary/`, en: "About Legion Mary", ta: "மரியாயின் சேனை பற்றி" },
+      { href: `${base}LegionofMary/events/`, en: "Legion Mary Events", ta: " நிகழ்வுகள்" },
+      { href: `${base}LegionofMary/join/`, en: "Join Us", ta: "எங்களுடன் இணையுங்கள்" },
     ],
   },
   {
@@ -60,19 +76,19 @@ const active = (m: MenuItem): boolean =>
     <div class="exodus">
       <a href="/" class="shepherd"
         ><img
-          src={`${base}asset/images/logo_texts.png`}
+          src={`${base}asset/images/logo/logo_final3.png`}
           alt=""
           class="cross"
           onerror="this.style.display='none'"
         />
-        <span class="psalm" data-ta="நித்திய சகாய அன்னை ஆலயம்"
+        <span class="psalm" data-ta="இடைவிடா சகாய அன்னை ஆலயம்"
           >OUR LADY OF PERPETUAL HELP</span
         ></a
       >
       <div class="tools">
         <button type="button" class="babel" aria-label="Language">தமிழ்</button>
         <button type="button" class="daybreak" aria-label="Light / Dark"
-          ><svg class="moon" viewBox="0 0 24 24"
+          ><svg class="moon" viewBox="0 0 24 24 "
             ><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg
           ><svg class="sun" viewBox="0 0 24 24"
             ><circle cx="12" cy="12" r="4"></circle><path

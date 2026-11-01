@@ -3,69 +3,119 @@ import Layout from "../layouts/Layout.astro";
 
 const base = import.meta.env.BASE_URL;
 ---
+<script>
+    const tabs = document.querySelectorAll(".schedule-tab");
+    const contents = document.querySelectorAll(".schedule-content");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            tabs.forEach((item) => item.classList.remove("active"));
+            contents.forEach((item) => item.classList.remove("active"));
+
+            tab.classList.add("active");
+
+            document.getElementById (tab.dataset.tab).classList.add("active");
+        });
+    });
+</script>
 
 <Layout css="home">
     <section class="ark" aria-label="Gallery">
         <div class="dove">
-            <img src={`${base}asset/images/churchimg/church.JPG`} alt="Our Lady of Perpetual Help Church" onerror="this.style.display='none'" />
+            <img
+                src={`${base}asset/images/churchimg/church.JPG`}
+                alt="Our Lady of Perpetual Help Church"
+                onerror="this.style.display='none'"
+            />
         </div>
 
         <div class="dove">
             <img
-                src={`${base}asset/images/churchimg/flagtree.JPG`} alt="Church flag tree" onerror="this.style.display='none'" />
+                src={`${base}asset/images/churchimg/flagtree.JPG`}
+                alt="Church flag tree"
+                onerror="this.style.display='none'"
+            />
         </div>
 
         <div class="dove">
             <img
-                src={`${base}asset/images/churchimg/church_right.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+                src={`${base}asset/images/churchimg/church_right.jpg`}
+                alt="Church flag tree"
+                onerror="this.style.display='none'"
+            />
         </div>
         <div class="dove">
             <img
-                src={`${base}asset/images/churchimg/church_candel.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+                src={`${base}asset/images/churchimg/church_candel.jpg`}
+                alt="Church flag tree"
+                onerror="this.style.display='none'"
+            />
         </div>
         <div class="dove">
             <img
-                src={`${base}asset/images/churchimg/church_left.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+                src={`${base}asset/images/churchimg/church_left.jpg`}
+                alt="Church flag tree"
+                onerror="this.style.display='none'"
+            />
         </div>
         <div class="dove">
             <img
-                src={`${base}asset/images/churchimg/church_hall.jpg`} alt="Church flag tree" onerror="this.style.display='none'" />
+                src={`${base}asset/images/churchimg/church_hall.jpg`}
+                alt="Church flag tree"
+                onerror="this.style.display='none'"
+            />
         </div>
     </section>
 
     <main class="gospel">
         <h1
             class="tidings"
-            data-ta="நித்திய சகாய அன்னை ஆலயத்திற்கு வரவேற்கிறோம்"
-        >
-            Welcome to Our Lady of Perpetual Help Church
+            data-ta="ஆலய நேரங்கள் காலை 6.00 மணி முதல் 12.00 மணி வரை மாலை 4.00 மணி முதல் 8.00 மணி வரை">
+            Church Timings Morning 6.00 AM to 12.00 PM Evening 4.00 PM to 8.00
+            PM
         </h1>
 
-        <div class="parable">
-            <p data-ta="வாருங்கள், இணைந்து வழிபட்டு நம்பிக்கையில் வளர்வோம்.">
-                Come, worship and grow together in faith.
-            </p>
+      <div class="parable">
+            
+        <div class="mass-schedule">
+            <!-- Table Header: Two Links -->
+            <div class="schedule-tabs">
+                <button class="schedule-tab active" data-ta="திருப்பலி நேரங்கள்" data-tab="regular">
+                    Mass Timings
+                </button>
+
+                <button class="schedule-tab" data-ta="சிறப்பு நேரங்கள்" data-tab="special">
+                    Special Mass Timings
+                </button>
+            </div>
+
+            <!-- Default: Regular Mass Timings -->
+            <div class="schedule-content active" id="regular">
+                <h2 data-ta="வாராந்திர திருப்பலி நேரங்கள்">Weekly Mass Timings</h2>
+
+                <table>
+                    <tr><th data-ta="தினம்">Day</th><th data-ta="நேரம்">Timing</th></tr>
+                    <tr><td data-ta="திங்கள்">Monday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="செவ்வாய்">Tuesday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="புதன்">Wednesday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="வியாழன்">Thursday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="வெள்ளி">Friday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="சனி">Saturday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
+                    <tr><td data-ta="ஞாயிறு">Sunday</td><td data-ta="காலை 6:30  &  காலை 8:30">Morning 6:30  &  Morning 8:30</td></tr>
+                </table>
+            </div>
+
+            <!-- Special Mass Timings -->
+            <div class="schedule-content" id="special">
+                <h2 data-ta="சிறப்பு திருப்பலி நேரங்கள்">Special Mass Timings</h2>
+
+                <table>
+                    <tr><th data-ta="திக்கு">Occasion</th><th data-ta="நேரம்">Mass Timing</th></tr>
+                    <tr><td data-ta="சிறப்பு திருப்பலி 1">Special Mass 1</td><td data-ta="காலை 7:00">Morning 7:00</td></tr>
+                    <tr><td data-ta="சிறப்பு திருப்பலி 2">Special Mass 2</td><td data-ta="காலை 7:00">Morning 7:00</td></tr>
+                </table>
+            </div>
         </div>
-
-        <div class="loaves">
-            <a class="loaf" href={`${base}church-timings/mass-timings/`}>
-                <h3 data-ta="திருப்பலி நேரங்கள்">Mass Timings</h3>
-                <p data-ta="திருப்பலி நேரங்களைக் காண்க.">
-                    See our Mass schedule.
-                </p>
-            </a>
-
-            <a class="loaf" href={`${base}youth/`}>
-                <h3 data-ta="இளையோர்">Youth</h3>
-                <p data-ta="எங்கள் இளையோருடன் இணையுங்கள்.">
-                    Join our youth family.
-                </p>
-            </a>
-
-            <a class="loaf" href={`${base}contact/`}>
-                <h3 data-ta="தொடர்புக்கு">Contact</h3>
-                <p data-ta="எங்களை அணுகுங்கள்.">Get in touch with us.</p>
-            </a>
-        </div>
+      </div>
     </main>
 </Layout>
