@@ -71,7 +71,7 @@ const base = import.meta.env.BASE_URL;
         <h1
             class="tidings"
             data-ta="ஆலய நேரங்கள் காலை 6.00 மணி முதல் 12.00 மணி வரை மாலை 4.00 மணி முதல் 8.00 மணி வரை">
-            Church Timings Morning 6.00 AM to 12.00 PM Evening 4.00 PM to 8.00
+            Church Timing Morning 6.00 AM to 12.00 PM Evening 4.00 PM to 8.00
             PM
         </h1>
 
@@ -81,20 +81,20 @@ const base = import.meta.env.BASE_URL;
             <!-- Table Header: Two Links -->
             <div class="schedule-tabs">
                 <button class="schedule-tab active" data-ta="திருப்பலி நேரங்கள்" data-tab="regular">
-                    Mass Timings
+                    Weekly Mass 
                 </button>
 
                 <button class="schedule-tab" data-ta="சிறப்பு நேரங்கள்" data-tab="special">
-                    Special Mass Timings
+                    Special Mass 
                 </button>
             </div>
 
             <!-- Default: Regular Mass Timings -->
             <div class="schedule-content active" id="regular">
-                <h2 data-ta="வாராந்திர திருப்பலி நேரங்கள்">Weekly Mass Timings</h2>
+                <h1  class="tidings" style="text-align: center;" data-ta="வாராந்திர திருப்பலி நேரங்கள்">Weekly Mass Timings</h1>
 
                 <table>
-                    <tr><th data-ta="தினம்">Day</th><th data-ta="நேரம்">Timing</th></tr>
+                    <tr><th data-ta="தினம்">Day</th><th data-ta="நேரம்">Timings</th></tr>
                     <tr><td data-ta="திங்கள்">Monday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
                     <tr><td data-ta="செவ்வாய்">Tuesday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
                     <tr><td data-ta="புதன்">Wednesday</td><td data-ta="காலை 6:30">Morning 6:30</td></tr>
@@ -107,12 +107,13 @@ const base = import.meta.env.BASE_URL;
 
             <!-- Special Mass Timings -->
             <div class="schedule-content" id="special">
-                <h2 data-ta="சிறப்பு திருப்பலி நேரங்கள்">Special Mass Timings</h2>
+                <h1 class="tidings" style="text-align: center;" data-ta="சிறப்பு திருப்பலி நேரங்கள்">Special Mass Timings</h1>
 
                 <table>
-                    <tr><th data-ta="திக்கு">Occasion</th><th data-ta="நேரம்">Mass Timing</th></tr>
-                    <tr><td data-ta="சிறப்பு திருப்பலி 1">Special Mass 1</td><td data-ta="காலை 7:00">Morning 7:00</td></tr>
-                    <tr><td data-ta="சிறப்பு திருப்பலி 2">Special Mass 2</td><td data-ta="காலை 7:00">Morning 7:00</td></tr>
+                    <tr><th data-ta="திக்கு">Occasion</th><th data-ta="நேரம்">Mass Timing & Dates</th></tr>
+                    <tr><td data-ta="கிறிஸ்துமஸ்">Christmas</td><td data-ta="டிசம்பர் 24 – இரவு 11:30 மணி & டிசம்பர் 25 – காலை 8:00 மணி">Dec 24th : 11:30 PM & 25th : 8:00 AM</td></tr>
+                    <tr><td data-ta="புத்தாண்டு">New Year</td><td data-ta="டிசம்பர் 31 – இரவு 11:30 மணி & ஜனவரி 1 – காலை 8:00 மணி">Dec 31st : 11:30 PM & Jan 1st : 8:00 AM</td></tr>
+                    <tr><td data-ta="ஈஸ்டர்">Easter</td><td data-ta=""></td></tr>
                 </table>
             </div>
         </div>

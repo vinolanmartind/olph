@@ -39,7 +39,7 @@
     animation-delay: inherit
 }
 .mass-schedule {
-    
+
     border: 1px solid #c9a24b;
     border-radius: 12px;
     overflow: hidden;
@@ -54,16 +54,16 @@
     flex: 1;
     padding: 16px 10px;
     border: none;
-    background: #f3fafd;
-    color: #0b2a3a;
+    background: #0b2a3a;
+    color: #fff;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
 }
 
 .schedule-tab.active {
-    background: #0b2a3a;
-    color: #fff;
+    background:#f3fafd;
+    color:#0b2a3a;
 }
 
 .schedule-content {
