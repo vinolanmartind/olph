@@ -4,19 +4,23 @@ import Layout from "../layouts/Layout.astro";
 const base = import.meta.env.BASE_URL;
 ---
 <script>
-    const tabs = document.querySelectorAll(".schedule-tab");
-    const contents = document.querySelectorAll(".schedule-content");
+const tabs = document.querySelectorAll(".schedule-tab");
+const contents = document.querySelectorAll(".schedule-content");
 
-    tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            tabs.forEach((item) => item.classList.remove("active"));
-            contents.forEach((item) => item.classList.remove("active"));
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        tabs.forEach((item) => item.classList.remove("active"));
+        contents.forEach((item) => item.classList.remove("active"));
 
-            tab.classList.add("active");
+        tab.classList.add("active");
 
-            document.getElementById (tab.dataset.tab).classList.add("active");
-        });
+        const target = tab.getAttribute("data-tab");
+
+        if (target) {
+            document.getElementById(target)?.classList.add("active");
+        }
     });
+});
 </script>
 
 <Layout css="home">
