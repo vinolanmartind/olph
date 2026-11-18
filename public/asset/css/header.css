@@ -470,3 +470,48 @@
         letter-spacing: .2px
     }
 }
+
+/* ===== HOME ONLY: transparent header over the slider =====
+   Applies only when <body class="is-home"> (set in Layout.astro).
+   The header stays at the top of the page and scrolls away with it (not fixed). */
+.is-home .genesis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: transparent;
+    border-bottom-color: transparent;
+    box-shadow: none
+}
+
+/* soft dark fade behind the header so white text is readable on bright slides */
+.is-home .genesis::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 -24px 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(8, 16, 40, .55), rgba(8, 16, 40, 0))
+}
+
+.is-home .genesis .psalm,
+.is-home .genesis .tools .babel,
+.is-home .genesis .tools .daybreak {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, .6)
+}
+
+.is-home .genesis .daybreak svg {
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .6))
+}
+
+.is-home .genesis .manna span {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .55)
+}
+
+@media(min-width:1025px) {
+    .is-home .genesis .psalter>.levite,
+    .is-home .genesis .mount>a.levite {
+        text-shadow: 0 1px 6px rgba(0, 0, 0, .6)
+    }
+}

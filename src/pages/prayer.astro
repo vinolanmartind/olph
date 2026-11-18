@@ -1,11 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '/public/asset/css/prayer.css';
 ---
+<script>
+  
+  const wrapper = document.querySelector('.prayer-wrapper');
+  const heading = document.querySelector('.tidings');
+
+  function updateDirection() {
+    if (!wrapper || !heading) return;
+    // Checks if the heading currently contains Tamil characters
+    const isTamil = /[\u0B80-\u0BFF]/.test(heading.textContent || '');
+    wrapper.classList.toggle('is-tamil', isTamil);
+  }
+
+  // Run on page load
+  updateDirection();
+
+  // Watch for language switch changes
+  if (heading) {
+    const observer = new MutationObserver(updateDirection);
+    observer.observe(heading, { childList: true, characterData: true, subtree: true });
+  }
+</script>
+
 <Layout css="events">
-<main class="gospel">
-<h1 class="tidings" data-ta="நிகழ்வுகள்">Events</h1>
-<div class="parable">
-<p data-ta="விவரங்கள் விரைவில்.">Details coming soon.</p>
-</div>
-</main>
+  <main class="gospel">
+    <div class="prayer-wrapper">
+      
+      <!-- Left Side (in English): Long Height Image -->
+      <div class="prayer-image">
+        <img src="/public/asset/images/madhaimg/madhaprayerimg.jpg" alt="Our Lady of Perpetual Help" />
+      </div>
+
+      <!-- Right Side (in English): Prayer Text -->
+      <div class="parable">
+        <h1 class="tidings" data-ta="இடைவிடா சகாய அன்னையின் செபம்">
+          Prayer to Our Lady of Perpetual Help
+        </h1>
+
+        <p data-ta="மிகவும் பரிசுத்த இடைவிடா சகாய அன்னையே, 
+        மோட்சத்தின் இராக்கினியே, விடியற்காலை நட்சத்திரமே,
+        மாசில்லாமல் பிறந்த குழந்தை இயேசுவிடம், எங்களுக்காக பரிந்து பேசுமம்மா.
+        உம்மை நம்பினவர்களுக்கு உதவி செய்ய, நீர் கடவுளால் ஏற்படுத்தப்பட்டீர்.
+        நாங்கள் உம்மை எங்கள் தாயாகவும், எங்கள் குடும்பங்களின் பாதுகாவலாகவும் தெரிந்து கொண்டோம். 
+        எங்கள் குடும்பங்களை எல்லாவித துன்பங்களிலிருந்து காப்பாற்றும். 
+        எங்கள் உள்ளத்திலுள்ள நல்ல திட்டங்களை ஆசீர்வதியும்.
+        எங்கள் வாழ்வும், செயல்களும் இறைவனுக்கு ஏற்புடையதாக மாற்றும். 
+        நாங்கள் செய்கின்ற பணிகளில் வெற்றியை தாரும்.
+        உம்மைப்போன்று கடவுளின் தூய ஆவியை பெற்று வாழ வழிகாட்டும்.
+        ஆமென்.">
+          O Most Holy Mother of Perpetual Help, Queen of Heaven, Morning Star, 
+          intercede for us before the Immaculate Child Jesus.
+          You have been appointed by God to help those who place their trust in you.
+          We have chosen you as our Mother and the Protector of our families.
+          Protect our families from all kinds of suffering. Bless the good intentions within our hearts.
+          Make our lives and actions pleasing to God. Grant us success in all the works we undertake.
+          Guide us to live, filled with the Holy Spirit of God, just as you were.
+          <br /><br />
+          Amen.
+        </p>
+      </div>
+
+    </div>
+  </main>
 </Layout>

@@ -6,36 +6,37 @@ const base = import.meta.env.BASE_URL;
     <div class="covenant">
         <div class="disciple">
             <img
-                src={`${base}asset/images/logo/final_logo4.png`}
+                class="cross-big"
+                src={`${base}asset/images/logo/olph_logofinal.png`}
                 alt="Our Lady of Perpetual Help Church Logo"
             />
         </div>
         <div class="disciple">
             <h3 data-ta="விரைவு இணைப்புகள்">Quick Links</h3><ul>
-                <li><a href="/" data-ta="முகப்பு">Home</a></li>
-                <li><a href="/youth/" data-ta="இளையோர்">Youth</a></li>
-                <li><a href="/contact/" data-ta="தொடர்புக்கு">Contact</a></li>
+                <li><a href={`${base}`} data-ta="முகப்பு">Home</a></li>
+                <li><a href={`${base}youth/`} data-ta="இளையோர்">Youth</a></li>
+                <li><a href={`${base}contact/`} data-ta="தொடர்புக்கு">Contact</a></li>
             </ul>
         </div>
         <div class="disciple">
             <h3 data-ta="எங்கள் கொள்கை">Our Policy</h3><ul>
                 <li>
-                    <a href="/privacy-policy/" data-ta="தனியுரிமைக் கொள்கை"
+                    <a href={`${base}privacy-policy/`} data-ta="தனியுரிமைக் கொள்கை"
                         >Privacy Policy</a
                     >
                 </li>
                 <li>
-                    <a href="/disclaimer-policy/" data-ta="மறுப்புக் கொள்கை"
+                    <a href={`${base}disclaimer-policy/`} data-ta="மறுப்புக் கொள்கை"
                         >Disclaimer Policy</a
                     >
                 </li>
                 <li>
-                    <a href="/terms/" data-ta="விதிமுறைகள் மற்றும் நிபந்தனைகள்"
+                    <a href={`${base}terms/`} data-ta="விதிமுறைகள் மற்றும் நிபந்தனைகள்"
                         >Terms and Condition</a
                     >
                 </li>
                 <li>
-                    <a href="/legal-policy/" data-ta="சட்டக் கொள்கை"
+                    <a href={`${base}legal-policy/`} data-ta="சட்டக் கொள்கை"
                         >Legal Policy</a
                     >
                 </li>

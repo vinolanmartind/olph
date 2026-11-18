@@ -2,11 +2,15 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const { css, title = "Our Lady of Perpetual Help Church" } = Astro.props;
-const v = "12";
+const { css, title = "Our Lady of Perpetual Help Church", bodyClass = "" } = Astro.props;
+const v = "14";
 const path = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 const asset = `${base}asset/`;
+// true only on the home page (works with the /olph base path)
+const trim = (p: string) => p.replace(/\/+$/, "");
+const isHome = trim(path) === trim(base) || trim(path) === `${trim(base)}/index.html`;
+const bodyClasses = [isHome ? "is-home" : "", bodyClass].filter(Boolean).join(" ");
 ---
 
 <!doctype html>
@@ -39,7 +43,7 @@ const asset = `${base}asset/`;
 
     {css && <link rel="stylesheet" href={`${asset}css/${css}.css?v=${v}`} />}
   </head>
-  <body>
+  <body class={bodyClasses || undefined}>
     <div
       id="intro-screen"
       class="intro-screen"
@@ -106,6 +110,20 @@ const asset = `${base}asset/`;
           // The timer still hides the intro if playback fails.
         });
       })();
+      function switchLanguage(lang) {
+       // 1. Update HTML lang attribute so CSS :lang(ta) / [lang="ta"] triggers
+      document.documentElement.lang = lang; // 'ta' for Tamil, 'en' for English
+
+      // 2. Your existing data-ta text swapping logic
+       document.querySelectorAll('[data-ta]').forEach((el) => {
+       if (lang === 'ta') {
+        if (!el.dataset.en) el.dataset.en = el.innerHTML; // Save original English
+      el.innerHTML = el.dataset.ta;
+      } else if (el.dataset.en) {
+      el.innerHTML = el.dataset.en;
+      }
+      });
+}
     </script>
   </body>
 </html>

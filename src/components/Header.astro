@@ -38,8 +38,8 @@ const menu = [
     en: "Legion Mary",
     ta: "மரியாயின் சேனை",
     kids: [
-      { href: `${base}LegionofMary/`, en: "About Legion ofMary", ta: "மரியாயின் சேனை பற்றி" },
-      { href: `${base}LegionofMary/events/`, en: "Legion Mary Events", ta: " நிகழ்வுகள்" },
+      { href: `${base}LegionofMary/`, en: "About Legion of Mary", ta: "மரியாயின் சேனை பற்றி" },
+      { href: `${base}LegionofMary/events/`, en: "Legion of Mary Events", ta: " நிகழ்வுகள்" },
       { href: `${base}LegionofMary/join/`, en: "Contact", ta: "தொடர்புக்கு" },
     ],
   },
@@ -74,9 +74,9 @@ const active = (m: MenuItem): boolean =>
   <input type="checkbox" id="menuToggle" class="blessing" aria-label="Menu" />
   <div class="pharaoh">
     <div class="exodus">
-      <a href="/" class="shepherd"
+      <a href={base} class="shepherd"
         ><img
-          src={`${base}asset/images/logo/final_logo4.png`}
+          src={`${base}asset/images/logo/olph_logofinal.png`}
           alt=""
           class="cross"
           onerror="this.style.display='none'"

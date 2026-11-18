@@ -1,11 +1,189 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}asset/images/story/${name}`;
+
+/* ===== EDIT YOUR STORY HERE =====
+   One block = one scroll step (big photo + card + small photo).
+   label  : big gold word/year  (e.g. "1985")
+   bg     : full-screen photo  -> public/asset/images/story/<name>.jpg   (1920px wide)
+   photo  : small photo in card -> public/asset/images/story/<name>-s.jpg (about 480px)
+   en / ta: English and Tamil text (Tamil shows when the language button is pressed)  */
+const chapters = [
+  {
+    label: { en: "Welcome", ta: "வரவேற்பு" },
+    title: { en: "Welcome to our parish", ta: "எங்கள் பங்குக்கு வரவேற்கிறோம்" },
+    text: {
+      en: "Our parish welcomes everyone with love, prayer and service.",
+      ta: "எங்கள் பங்கு அன்பு, செபம், சேவையுடன் அனைவரையும் வரவேற்கிறது.",
+    },
+    bg: "church.jpg",
+    photo: "madha-s.jpg",
+  },
+  {
+    label: { en: "Our Church", ta: "எங்கள் ஆலயம்" },
+    title: { en: "A house of prayer", ta: "செபத்தின் இல்லம்" },
+    text: {
+      en: "Our church is a place where families gather to pray, celebrate and find peace.",
+      ta: "குடும்பங்கள் ஒன்றுகூடி செபிக்கவும், கொண்டாடவும், அமைதி பெறவும் எங்கள் ஆலயம் ஓர் இடமாக உள்ளது.",
+    },
+    bg: "right.jpg",
+    photo: "left-s.jpg",
+  },
+  {
+    label: { en: "Prayer", ta: "செபம்" },
+    title: { en: "Our Lady of Perpetual Help", ta: "இடைவிடா சகாய அன்னை" },
+    text: {
+      en: "We gather before Mother Mary, trusting in her constant help in every joy and every sorrow.",
+      ta: "மகிழ்ச்சியிலும் துயரத்திலும் அன்னையின் இடைவிடா உதவியை நம்பி அவர் முன் ஒன்றுகூடுகிறோம்.",
+    },
+    bg: "flag.jpg",
+    photo: "madha-s.jpg",
+  },
+  {
+    label: { en: "Community", ta: "சமூகம்" },
+    title: { en: "Sagayamatha Hall", ta: "சகாயமாதா மண்டபம்" },
+    text: {
+      en: "Our hall brings the parish together for meetings, celebrations and gatherings of every age.",
+      ta: "கூட்டங்கள், விழாக்கள், எல்லா வயதினரின் ஒன்றுகூடல்களுக்காக எங்கள் மண்டபம் பங்கை ஒன்றிணைக்கிறது.",
+    },
+    bg: "hall.jpg",
+    photo: "candel-s.jpg",
+  },
+  {
+    label: { en: "Service", ta: "சேவை" },
+    title: { en: "Faith in action", ta: "செயலில் விசுவாசம்" },
+    text: {
+      en: "Through the Legion of Mary, our youth and many volunteers, the parish serves those in need.",
+      ta: "மரியாயின் சேனை, இளையோர் மற்றும் தன்னார்வலர்கள் வழியாக தேவையுள்ளோருக்கு பங்கு சேவை செய்கிறது.",
+    },
+    bg: "candel.jpg",
+    photo: "hall-s.jpg",
+  },
+  {
+    label: { en: "Join Us", ta: "இணைந்திடுங்கள்" },
+    title: { en: "You are always welcome", ta: "நீங்கள் எப்போதும் வரவேற்கப்படுகிறீர்கள்" },
+    text: {
+      en: "Come as you are. Pray with us, meet us and become part of our parish family.",
+      ta: "நீங்கள் இருக்கும் நிலையிலேயே வாருங்கள். எங்களுடன் செபியுங்கள், பங்குக் குடும்பத்தில் இணையுங்கள்.",
+    },
+    bg: "left.jpg",
+    photo: "church-s.jpg",
+  },
+];
 ---
-<Layout css="about">
-<main class="gospel">
-<h1 class="tidings" data-ta="எங்களைப் பற்றி">About Us</h1>
-<div class="parable">
-<p data-ta="எங்கள் பங்கு அன்பு, செபம், சேவையுடன் அனைவரையும் வரவேற்கிறது.">Our parish welcomes everyone with love, prayer and service.</p>
-</div>
-</main>
+
+<Layout css="about" bodyClass="is-about" title="About Us - Our Lady of Perpetual Help Church">
+  <h1 class="sr-only" data-ta="எங்களைப் பற்றி">About Us</h1>
+
+  <section class="story" data-story style={`--n:${chapters.length}`} aria-label="Our story">
+    <div class="story-stage">
+      {chapters.map((c, i) => (
+        <img
+          class:list={["story-bg", { "is-on": i === 0 }]}
+          src={img(c.bg)}
+          alt=""
+          decoding="async"
+          fetchpriority={i === 0 ? "high" : "auto"}
+        />
+      ))}
+      <div class="story-shade"></div>
+
+      <div class="story-ui">
+        <div class="story-cards">
+          {chapters.map((c, i) => (
+            <article class:list={["story-card", { "is-on": i === 0 }]} aria-hidden={i === 0 ? "false" : "true"}>
+              <div class="story-head">
+                <p class="story-label" data-ta={c.label.ta}>{c.label.en}</p>
+                <h2 class="story-title" data-ta={c.title.ta}>{c.title.en}</h2>
+              </div>
+              <img class="story-photo" src={img(c.photo)} alt="" loading="lazy" decoding="async" />
+              <p class="story-text" data-ta={c.text.ta}>{c.text.en}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="story-progress">
+          <div class="story-now" aria-hidden="true">
+            {chapters.map((c, i) => (
+              <span class:list={[{ "is-on": i === 0 }]} data-ta={c.label.ta}>{c.label.en}</span>
+            ))}
+          </div>
+          <div class="story-bar">
+            {chapters.map((c, i) => (
+              <button type="button" class="story-seg" data-go={i} aria-label={`${i + 1} / ${chapters.length}: ${c.label.en}`}>
+                <b><i></i></b>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const story = document.querySelector<HTMLElement>("[data-story]");
+  if (story) {
+    const stage = story.querySelector<HTMLElement>(".story-stage")!;
+    const bgs = [...story.querySelectorAll(".story-bg")];
+    const cards = [...story.querySelectorAll(".story-card")];
+    const nows = [...story.querySelectorAll(".story-now span")];
+    const fills = [...story.querySelectorAll<HTMLElement>(".story-seg i")];
+    const header = document.querySelector<HTMLElement>(".genesis");
+    const n = cards.length;
+    let hh = 0;
+    let idx = -1;
+    let queued = false;
+
+    const progress = () => {
+      const total = story.offsetHeight - stage.offsetHeight;
+      const top = story.getBoundingClientRect().top - hh;
+      return { total, p: total > 0 ? Math.min(1, Math.max(0, -top / total)) : 0 };
+    };
+
+    const update = () => {
+      queued = false;
+      const { p } = progress();
+      const i = Math.min(n - 1, Math.floor(p * n));
+      if (i !== idx) {
+        idx = i;
+        [bgs, cards, nows].forEach((list) =>
+          list.forEach((el, k) => el.classList.toggle("is-on", k === i)),
+        );
+        cards.forEach((c, k) => c.setAttribute("aria-hidden", k === i ? "false" : "true"));
+      }
+      fills.forEach((f, k) => {
+        f.style.transform = `scaleX(${Math.min(1, Math.max(0, p * n - k))})`;
+      });
+    };
+
+    const queue = () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    const measure = () => {
+      hh = header ? header.offsetHeight : 0;
+      story.style.setProperty("--hh", `${hh}px`);
+      update();
+    };
+
+    story.querySelectorAll<HTMLElement>("[data-go]").forEach((b) => {
+      b.addEventListener("click", () => {
+        const k = Number(b.dataset.go);
+        const { total } = progress();
+        const start = window.scrollY + story.getBoundingClientRect().top - hh;
+        window.scrollTo({ top: start + ((k + 0.5) / n) * total, behavior: "smooth" });
+      });
+    });
+
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", measure);
+    window.addEventListener("load", measure);
+    measure();
+  }
+</script>
